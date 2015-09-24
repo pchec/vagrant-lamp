@@ -30,6 +30,7 @@ EOD
 	php_go
 	mysql_go
 	composer_go
+	phpmyadmin_go
 
 	touch /var/lock/vagrant-provision
 }
@@ -117,6 +118,15 @@ mysql_go() {
 
 composer_go() {
 	curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+}
+
+phpmyadmin_go() {
+	echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
+	echo "phpmyadmin phpmyadmin/app-password-confirm password root" | debconf-set-selections
+	echo "phpmyadmin phpmyadmin/mysql/admin-pass password root" | debconf-set-selections
+	echo "phpmyadmin phpmyadmin/mysql/app-pass password root" | debconf-set-selections
+	echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-set-selections
+	apt-get -y install phpmyadmin
 }
 
 main
