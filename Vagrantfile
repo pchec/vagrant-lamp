@@ -12,6 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network "forwarded_port", guest: 3306, host: 8889
 
 	config.vm.provision "shell", path: "provision.sh"
+  # Run script to increase swap memory
+  config.vm.provision "shell", path: "increase_swap.sh"
 
   # config.vm.provider "virtualbox" do |vb|
   #   # Don't boot with headless mode
