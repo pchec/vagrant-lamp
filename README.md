@@ -21,7 +21,7 @@ Usage
 -----
 
 ### Startup
-	$ git clone http://www.github.com/mattandersen/vagrant-lamp
+	$ git clone https://github.com/pchec/vagrant-lamp
 	$ cd vagrant-lamp
 	$ vagrant up
 
@@ -37,18 +37,26 @@ Externally the MySQL server is available at port 8889, and when running on the V
 Username: root
 Password: root
 
+#### Phpmyadmin
+You can access `phpmyadmin` at <http://localhost:8888/phpmyadmin>
+
+#### Composer
+Composer is a php dependency manager. It is installed globally, so you can use it in any of your projects by typing `composer`.
+
 Technical Details
 -----------------
 * Ubuntu 14.04 64-bit
 * Apache 2
 * PHP 5.5
 * MySQL 5.5
+* Phpmyadmin
+* Composer
 
 We are using the base Ubuntu 14.04 box from Vagrant. If you don't already have it downloaded
 the Vagrantfile has been configured to do it for you. This only has to be done once
 for each account on your host computer.
 
-The web root is located in the project directory at `htdocs` and you can install your files there
+The web root is located in the project directory at `src` and you can install your files there.
 
 And like any other vagrant file you have SSH access with
 
