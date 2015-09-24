@@ -29,6 +29,7 @@ EOD
 	apache_go
 	php_go
 	mysql_go
+	composer_go
 
 	touch /var/lock/vagrant-provision
 }
@@ -83,7 +84,7 @@ EOF
 }
 
 php_go() {
-	apt-get -y install php5 php5-curl php5-mysql php5-sqlite php5-xdebug
+	apt-get -y install php5 php5-curl php5-mysql php5-sqlite php5-xdebug php5-intl
 
 	sed -i "s/display_startup_errors = Off/display_startup_errors = On/g" ${php_config_file}
 	sed -i "s/display_errors = Off/display_errors = On/g" ${php_config_file}
@@ -112,6 +113,10 @@ mysql_go() {
 
 	service mysql restart
 	update-rc.d apache2 enable
+}
+
+composer_go() {
+	curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 }
 
 main
