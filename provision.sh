@@ -31,6 +31,7 @@ EOD
 	mysql_go
 	composer_go
 	phpmyadmin_go
+	bower_go
 
 	touch /var/lock/vagrant-provision
 }
@@ -127,6 +128,13 @@ phpmyadmin_go() {
 	echo "phpmyadmin phpmyadmin/mysql/app-pass password root" | debconf-set-selections
 	echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-set-selections
 	apt-get -y install phpmyadmin
+}
+
+bower_go() {
+	curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
+	apt-get install -y nodejs
+	apt-get install -y build-essential
+	npm install -g bower
 }
 
 main
