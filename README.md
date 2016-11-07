@@ -13,9 +13,9 @@ And this project aims to make it very easy to spinup a complete LAMP stack in a 
 
 Requirements
 ------------
-* VirtualBox <http://www.virtualbox.com>
+* VirtualBox <http://www.virtualbox.org>
 * Vagrant <http://www.vagrantup.com>
-* Git <http://git-scm.com/>
+* Git <http://git-scm.com/> (Alternatively, SourceTree is a very good git client <https://www.sourcetreeapp.com/>.)
 
 Usage
 -----
@@ -51,6 +51,7 @@ Technical Details
 * MySQL 5.5
 * Phpmyadmin
 * Composer
+* Bower
 
 We are using the base Ubuntu 14.04 box from Vagrant. If you don't already have it downloaded
 the Vagrantfile has been configured to do it for you. This only has to be done once
