@@ -11,15 +11,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network "forwarded_port", guest: 80, host: 8888
     config.vm.network "forwarded_port", guest: 3306, host: 8889
 
-	config.vm.provision "shell", path: "provision.sh"
-  # Run script to increase swap memory
-  config.vm.provision "shell", path: "increase_swap.sh"
+    config.vm.synced_folder "src/", "/vagrant/src"
+    config.vm.synced_folder "ansible/", "/home/vagrant/ansible", create: true
 
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
+    config.vm.provision "shell", path: "provision.sh"
+    # Run script to increase swap memory
+    config.vm.provision "shell", path: "increase_swap.sh"
+
+    # config.vm.provider "virtualbox" do |vb|
+    #   # Don't boot with headless mode
+    #   vb.gui = true
+    #
+    #   # Use VBoxManage to customize the VM. For example to change memory:
+    #   vb.customize ["modifyvm", :id, "--memory", "1024"]
+    # end
 end
